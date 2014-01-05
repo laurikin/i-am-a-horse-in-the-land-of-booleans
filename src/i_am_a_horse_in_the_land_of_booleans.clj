@@ -5,7 +5,7 @@
   (if x true false))
 
 (defn abs [x]
-  ":(")
+  (if (< x 0) (- x) x))
 
 (defn divisible? [divisor n]
   (zero? (mod n divisor)))
@@ -23,16 +23,32 @@
     :else ""))
 
 (defn teen? [age]
-  (< 13 age 20))
+  (< 12 age 20))
 
 (defn not-teen? [age]
-  ":(")
+  (not (teen? age)))
+
+(or false true)
+
+(not-teen? 16)
 
 (defn generic-doublificate [x]
-  ":(")
+  (cond
+    (number? x) (* x 2)
+    (empty? x) nil
+    (or (list? x) (vector? x)) (* 2 (count x))
+    :else true))
+
+
 
 (defn leap-year? [year]
-  ":(")
+  (cond
+   (and (divisible? 4 year) (not (divisible? 100 year))) true
+   (and (divisible? 4 year) (divisible? 100 year) (divisible? 400 year)) true
+   :else false))
+
+(leap-year? 404)
+
 
 ; '_______'
 
